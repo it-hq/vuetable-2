@@ -5386,7 +5386,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       class: _vm.onRowClass(item, itemIndex),
       attrs: {
         "item-index": itemIndex,
-        "render": _vm.onRowChanged(item)
+        "render": _vm.onRowChanged(item),
+        "data-id": item['id'],
+        "data-position": _vm.tablePagination['from'] + itemIndex
       },
       on: {
         "click": function($event) {
@@ -5616,7 +5618,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       class: _vm.onRowClass(item, itemIndex),
       attrs: {
         "item-index": itemIndex,
-        "render": _vm.onRowChanged(item)
+        "render": _vm.onRowChanged(item),
+        "data-id": item['id'],
+        "data-position": _vm.tablePagination['from'] + itemIndex
       },
       on: {
         "dblclick": function($event) {
