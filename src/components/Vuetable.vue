@@ -88,16 +88,19 @@
                   <td v-if="extractName(field.name) == '__sequence'"
                     :key="fieldIndex"
                     :class="['vuetable-sequence', field.dataClass]"
+                    :data-label="getTitle(field)"
                     v-html="renderSequence(itemIndex)">
                   </td>
                   <td v-if="extractName(field.name) == '__handle'"
                     :key="fieldIndex"
                     :class="['vuetable-handle', field.dataClass]"
+                    :data-label="getTitle(field)"
                     v-html="renderIconTag(['handle-icon', css.handleIcon])"
                   ></td>
                   <td v-if="extractName(field.name) == '__checkbox'"
                     :key="fieldIndex"
                     :class="['vuetable-checkboxes', field.dataClass]"
+                    :data-label="getTitle(field)"
                   >
                     <input type="checkbox"
                       @change="toggleCheckbox(item, field.name, $event)"
@@ -106,6 +109,7 @@
                   <td v-if="extractName(field.name) === '__component'"
                     :key="fieldIndex"
                     :class="['vuetable-component', field.dataClass]"
+                    :data-label="getTitle(field)"
                   >
                     <component :is="extractArgs(field.name)"
                       :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
@@ -114,6 +118,7 @@
                   <td v-if="extractName(field.name) === '__slot'"
                     :key="fieldIndex"
                     :class="['vuetable-slot', field.dataClass]"
+                    :data-label="getTitle(field)"
                   >
                     <slot :name="extractArgs(field.name)"
                       :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
@@ -123,6 +128,7 @@
                 <template v-else>
                   <td :class="field.dataClass"
                     :key="fieldIndex"
+                    :data-label="getTitle(field)"
                     v-html="renderNormalField(field, item)"
                     @click="onCellClicked(item, field, $event)"
                     @dblclick="onCellDoubleClicked(item, field, $event)"
@@ -231,15 +237,18 @@
                 :key="fieldIndex"
                 :class="['vuetable-sequence', field.dataClass]"
                 v-html="renderSequence(itemIndex)"
+                :data-label="getTitle(field)"
               ></td>
               <td v-if="extractName(field.name) == '__handle'"
                 :key="fieldIndex"
                 :class="['vuetable-handle', field.dataClass]"
                 v-html="renderIconTag(['handle-icon', css.handleIcon])"
+                :data-label="getTitle(field)"
               ></td>
               <td v-if="extractName(field.name) == '__checkbox'"
                 :key="fieldIndex"
                 :class="['vuetable-checkboxes', field.dataClass]"
+                :data-label="getTitle(field)"
               >
                 <input type="checkbox"
                   @change="toggleCheckbox(item, field.name, $event)"
@@ -248,6 +257,7 @@
               <td v-if="extractName(field.name) === '__component'"
                 :key="fieldIndex"
                 :class="['vuetable-component', field.dataClass]"
+                :data-label="getTitle(field)"
               >
                 <component :is="extractArgs(field.name)"
                   :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
@@ -256,6 +266,7 @@
               <td v-if="extractName(field.name) === '__slot'"
                 :key="fieldIndex"
                 :class="['vuetable-slot', field.dataClass]"
+                :data-label="getTitle(field)"
               >
                 <slot :name="extractArgs(field.name)"
                   :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
@@ -270,6 +281,7 @@
                 @click="onCellClicked(item, field, $event)"
                 @dblclick="onCellDoubleClicked(item, field, $event)"
                 @contextmenu="onCellRightClicked(item, field, $event)"
+                :data-label="getTitle(field)"
               ></td>
               <td v-else
                 :key="fieldIndex"
@@ -278,6 +290,7 @@
                 @click="onCellClicked(item, field, $event)"
                 @dblclick="onCellDoubleClicked(item, field, $event)"
                 @contextmenu="onCellRightClicked(item, field, $event)"
+                :data-label="getTitle(field)"
               ></td>
             </template>
           </template>
